@@ -25,6 +25,6 @@
     <string name="title_activity_online_read">OnlineRead</string>
 
     <string name="group">请输入组号</string>
-
+    <string name="timePickerTitle">时间</string>
 
 </resources>

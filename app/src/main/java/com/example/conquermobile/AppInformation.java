@@ -17,7 +17,6 @@ public class AppInformation {
     private Context context;
     private int times;
     private boolean isSys;
-
     public boolean isSys() {
         return isSys;
     }
