@@ -146,12 +146,14 @@ public class AppStatisticsList extends AppCompatActivity {
         dataList.add(map);
         Log.d("HQS", "appInformation "+ShowList.size());
         for(AppInformation appInformation : ShowList) {
-            map = new HashMap<>();
-            map.put("label",appInformation.getLabel());
-            map.put("info","运行时间: " + DateUtils.formatElapsedTime(appInformation.getUsedTimebyDay() / 1000));
-            map.put("times","本次开机操作次数: " + appInformation.getTimes());
-            map.put("icon",appInformation.getIcon());
-            dataList.add(map);
+            if(appInformation.getTimes()>0){
+                map = new HashMap<>();
+                map.put("label",appInformation.getLabel());
+                map.put("info","运行时间: " + DateUtils.formatElapsedTime(appInformation.getUsedTimebyDay() / 1000));
+                map.put("times","本次开机操作次数: " + appInformation.getTimes());
+                map.put("icon",appInformation.getIcon());
+                dataList.add(map);
+            }
         }
 
         return dataList;

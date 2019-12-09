@@ -14,6 +14,10 @@ import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
+import com.example.conquermobile.entities.RestrictedApp;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -24,7 +28,6 @@ import java.util.List;
 public class BackgroundUtil {
 
     private static final String TAG = "BackgroundUtil";
-
     /**
      * 方法4：通过使用UsageStatsManager获取，此方法是ndroid5.0A之后提供的API
      * 必须：
@@ -99,5 +102,37 @@ public class BackgroundUtil {
         } catch (ActivityNotFoundException e) {
             Log.i(TAG,"Start usage access settings activity fail!");
         }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
+    public static List<RestrictedApp> getAllAppsNonSystem(Context context){
+        List<RestrictedApp> restrictedApps = new ArrayList<>();
+        List<UsageStats> usageStats;
+        PackageManager pm = context.getPackageManager();
+        UsageStatsManager m = (UsageStatsManager)context.getSystemService(Context.USAGE_STATS_SERVICE);
+        if(m != null) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.add(Calendar.DATE, -5);
+            long begintime = calendar.getTimeInMillis();
+            long now = System.currentTimeMillis();
+            usageStats = m.queryUsageStats(UsageStatsManager.INTERVAL_YEARLY, begintime, now);
+            for(UsageStats usageStat : usageStats){
+                try {
+                    ApplicationInfo applicationInfo = pm.getApplicationInfo(usageStat.getPackageName(),0);
+                    if((usageStat.getTotalTimeInForeground()>0)&&(applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 1){
+                        RestrictedApp restrictedApp = new RestrictedApp();
+                        restrictedApp.appName = (String)pm.getApplicationLabel(applicationInfo);
+                        restrictedApp.usedTimes = usageStat.getTotalTimeInForeground();
+                        restrictedApp.setEndTime(0);
+                        //加载图像
+                        restrictedApp.setIcon(applicationInfo.loadIcon(pm));
+                        restrictedApp.setRestrictedAppName(usageStat.getPackageName());
+                        restrictedApps.add(restrictedApp);
+                    }
+                } catch (PackageManager.NameNotFoundException e) {
+                }
+            }
+        }
+        return restrictedApps;
     }
 }

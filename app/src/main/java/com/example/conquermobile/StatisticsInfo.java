@@ -43,8 +43,6 @@ public class StatisticsInfo {
     private void setShowList() {
         this.ShowList = new ArrayList<>();
         totalTime = 0;
-        Log.d("HQS", "style "+style);
-        Log.d("HQS", "AppInfoList.size() "+AppInfoList.size());
         for(int i=0;i<AppInfoList.size();i++) {
             if(AppInfoList.get(i).getUsedTimebyDay() >= 0 && !AppInfoList.get(i).isSys()) { //&& AppInfoList.get(i).getTimes() > 0) {
                 this.ShowList.add(AppInfoList.get(i));
@@ -168,30 +166,6 @@ public class StatisticsInfo {
 
     public ArrayList<AppInformation> getShowList() {
         return ShowList;
-    }
-
-
-    public ArrayList<AppInformation> getAllAppInfos(){
-        UsageStatsManager m = (UsageStatsManager)this.context.getSystemService(Context.USAGE_STATS_SERVICE);
-        ArrayList<AppInformation> allAppInfos;
-        allAppInfos = new ArrayList<>();
-        Calendar calendar =  Calendar.getInstance();;
-        calendar.add(Calendar.YEAR,-1);
-        long begintime = calendar.getTimeInMillis();
-        long now = System.currentTimeMillis();
-        List<UsageStats> allApps = m.queryUsageStats(UsageStatsManager.INTERVAL_YEARLY, begintime, now);
-        PackageManager pm = this.context.getPackageManager();
-
-        for(UsageStats usageStats: allApps) {
-            PackageInfo packageInfo;
-            try {
-                packageInfo = pm.getPackageInfo(usageStats.getPackageName(), 0);
-            } catch (PackageManager.NameNotFoundException e) {
-                continue;
-            }
-            allAppInfos.add(new AppInformation(usageStats , context, (packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) ==1));
-        }
-        return allAppInfos;
     }
 }
 
