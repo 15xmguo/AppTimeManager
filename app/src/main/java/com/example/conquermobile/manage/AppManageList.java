@@ -1,4 +1,4 @@
-package com.example.conquermobile;
+package com.example.conquermobile.manage;
 
 import android.annotation.SuppressLint;
 import android.graphics.drawable.Drawable;
@@ -13,6 +13,7 @@ import android.widget.SimpleAdapter;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.conquermobile.R;
 import com.example.conquermobile.abs.AppDatabase;
 import com.example.conquermobile.dao.RestrictedAppDao;
 import com.example.conquermobile.entities.RestrictedApp;

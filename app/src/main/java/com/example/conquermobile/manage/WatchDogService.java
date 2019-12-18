@@ -1,4 +1,4 @@
-package com.example.conquermobile.service;
+package com.example.conquermobile.manage;
 
 import android.app.Service;
 import android.content.Intent;
@@ -145,6 +145,9 @@ public class WatchDogService extends Service {
         }
         if(min>0){
             info += ""+min+"分钟";
+        }
+        if(hour+min==0){
+            info+="剩下的1分钟内";
         }
         info = info+"里继续努力吧!";
         TextView textView = view.findViewById(R.id.textView);

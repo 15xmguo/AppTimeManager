@@ -26,5 +26,7 @@
 
     <string name="group">请输入组号</string>
     <string name="timePickerTitle">时间</string>
-
+    <string name="btn_manage_app">限制应用使用</string>
+    <string name="btn_tomato">快速番茄</string>
+    <string name="quick_tomato_title">选择快速番茄时长</string>
 </resources>
