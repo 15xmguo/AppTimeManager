@@ -48,16 +48,16 @@ public class QuickTomato extends Service {
                     floatWindowOpen();
                     break;
                 case FLOAT_WINDOW_CLOSE:
-                    FloatWindow.get("new").hide();
+                    FloatWindow.get("tomato").hide();
                     break;
             }
         };
     };
 
     private void floatWindowOpen(){
-        if(FloatWindow.get("new")!=null){
+        if(FloatWindow.get("tomato")!=null){
             changeView();
-            FloatWindow.get("new").show();
+            FloatWindow.get("tomato").show();
         }else{
             changeView();
             FloatWindow
@@ -67,7 +67,7 @@ public class QuickTomato extends Service {
                     .setHeight(Screen.height,1.2f)
                     .setX(Screen.width, 0f)                                   //设置控件初始位置
                     .setY(Screen.height,0f)
-                    .setTag("new")
+                    .setTag("tomato")
                     .setDesktopShow(true)
                     .setMoveType(MoveType.inactive)
                     .build();
