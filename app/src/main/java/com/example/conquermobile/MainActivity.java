@@ -1,8 +1,6 @@
 package com.example.conquermobile;
 
 import android.annotation.SuppressLint;
-import android.app.admin.DevicePolicyManager;
-import android.content.ComponentName;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.RectF;
@@ -31,7 +29,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.conquermobile.lib.BackgroundUtil;
-import com.example.conquermobile.service.WatchDogService;
+import com.example.conquermobile.manage.WatchDogService;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
@@ -100,15 +98,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         menuLists = new ArrayList<String>();
 
-
-
         menuLists.add("登录或注册");
         menuLists.add("PK小组");
         menuLists.add("应用统计图谱");
         menuLists.add("详细使用信息");
         menuLists.add("应用管理");
         menuLists.add("关于我们");
-
 
         adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, menuLists);
@@ -208,7 +203,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     startActivity(intent3);
                     break;
                 case 4:
-                    Intent intent4 = new Intent(MainActivity.this, AppManageList.class);
+                    Intent intent4 = new Intent(MainActivity.this, AppManagement.class);
                     startActivity(intent4);
                     break;
                 case 5:

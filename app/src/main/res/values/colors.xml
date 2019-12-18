@@ -150,7 +150,7 @@
         <color name="lightseagreen">#20B2AA</color><!--亮海蓝色 -->
         <color name="dodgerblue">#1E90FF</color><!--闪兰色 -->
         <color name="midnightblue">#191970</color><!--中灰兰色 -->
-        <color name="aqua">#00FFFF</color><!--浅绿色 -->
+        <color name="aqua">#F04F37</color><!--浅绿色 -->
         <color name="cyan">#00FFFF</color><!--青色 -->
         <color name="springgreen">#00FF7F</color><!--春绿色-->
         <color name="lime">#00FF00</color><!--酸橙色 -->
@@ -168,5 +168,6 @@
         <color name="black">#000000</color><!--黑色 -->
         <color name="younggreen">#4FCC00</color>
         <color name="black_overlay">#66000000</color>
-    </resources>
+    <color name="btn_text_color">#E91E63</color>
+</resources>
 

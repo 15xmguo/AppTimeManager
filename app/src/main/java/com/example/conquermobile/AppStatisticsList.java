@@ -137,7 +137,6 @@ public class AppStatisticsList extends AppCompatActivity {
 
     private List<Map<String,Object>> getDataList(ArrayList<AppInformation> ShowList) {
         List<Map<String, Object>> dataList = new ArrayList<Map<String, Object>>();
-
         Map<String,Object> map = new HashMap<String,Object>();
         map.put("label","全部应用");
         map.put("info","运行时间: " + DateUtils.formatElapsedTime(totalTime / 1000));
@@ -155,7 +154,6 @@ public class AppStatisticsList extends AppCompatActivity {
                 dataList.add(map);
             }
         }
-
         return dataList;
     }
 
