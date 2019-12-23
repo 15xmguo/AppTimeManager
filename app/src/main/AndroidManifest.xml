@@ -1,61 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.conquermobile">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.app.timemanager">
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" />
+    <uses-permission xmlns:tools="http://schemas.android.com/tools"
+        android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.DEVICE_POWER" />
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.REBOOT"></uses-permission>
-    <uses-permission android:name="android.permission.SHUTDOWN"></uses-permission>
-
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher2"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name="com.app.timemanager.manage.QuickTomato"></activity>
+        <activity android:name="com.app.timemanager.AppManagement" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.app.timemanager.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme">
-        </activity>
-
-        <activity android:name=".Guide" />
-        <activity android:name=".Login" />
-        <activity android:name=".JoinGroup" />
-        <activity android:name=".WelcomeAct">
+            android:theme="@style/AppTheme" />
+        <activity android:name="com.app.timemanager.Guide" />
+        <activity android:name="com.app.timemanager.todolist.DetailActivity"/>
+        <activity android:name="com.app.timemanager.todolist.TodoListActivity"/>
+        <activity android:name="com.app.timemanager.WelcomeAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <receiver
-            android:name=".AdminReceiver"
-            android:description="@string/description"
-            android:label="@string/app_name"
-            android:permission="android.permission.BIND_DEVICE_ADMIN">
-            <meta-data
-                android:name="android.app.device_admin"
-                android:resource="@xml/deviceinfo" />
-
-            <intent-filter>
-                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
-            </intent-filter>
-        </receiver>
-
-        <activity android:name=".AppStatisticsList" />
-        <activity android:name=".PiePolylineChartActivity" />
-        <activity android:name=".AppManageList" />
-        <activity android:name=".IO" />
+        <activity android:name="com.app.timemanager.AppStatisticsList" />
+        <activity android:name="com.app.timemanager.PiePolylineChartActivity" />
+        <activity android:name="com.app.timemanager.manage.AppManageList" />
+        <service android:name="com.app.timemanager.manage.WatchDogService" />
+        <service android:name="com.app.timemanager.manage.QuickTomato" />
     </application>
-
 
 </manifest>

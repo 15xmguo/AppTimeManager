@@ -1,64 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_app_statistics_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.conquermobile.AppStatisticsList">
-
+    tools:context=".AppStatisticsList">
 
     <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/AppStatisticsList"
-        android:layout_above="@+id/buttonbarList" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_above="@+id/buttonbarList"
+        app:layout_constraintBottom_toTopOf="@+id/buttonbarList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
+        android:id="@+id/buttonbarList"
         android:layout_width="match_parent"
         android:layout_height="145px"
-        android:orientation="horizontal"
-        android:id="@+id/buttonbarList"
+        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true">
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
         <Button
-            android:text="DAY"
-            android:layout_width="0dp"
-            android:layout_weight="1.0"
-            android:layout_height="wrap_content"
             android:id="@+id/daybuttonlist"
-            android:background="@drawable/bt_layout"
-            android:textColor="@color/white"/>
-
-
-        <Button
-            android:text="WEEK"
             android:layout_width="0dp"
-            android:layout_weight="1.0"
             android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:background="@drawable/bt_layout"
+            android:text="DAY"
+            android:textColor="@color/white" />
+
+
+        <Button
             android:id="@+id/weekbuttonlist"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
             android:background="@drawable/bt_layout"
-            android:textColor="@color/white"/>
+            android:text="WEEK"
+            android:textColor="@color/white" />
 
         <Button
-            android:text="MONTH"
-            android:layout_width="0px"
-            android:layout_weight="1.0"
-            android:layout_height="wrap_content"
             android:id="@+id/monthbuttonlist"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
             android:background="@drawable/bt_layout"
-            android:textColor="@color/white"/>
+            android:text="MONTH"
+            android:textColor="@color/white" />
 
         <Button
-            android:text="YEAR"
-            android:layout_width="0px"
-            android:layout_weight="1.0"
-            android:layout_height="wrap_content"
             android:id="@+id/yearbuttonlist"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
             android:background="@drawable/bt_layout"
-            android:textColor="@color/white"/>
+            android:text="YEAR"
+            android:textColor="@color/white" />
     </LinearLayout>
 
 
-</RelativeLayout>
-
+</androidx.constraintlayout.widget.ConstraintLayout>
